@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Privacy guard: the browser will block this page from making ANY network request. -->
+<meta http-equiv="Content-Security-Policy" content="connect-src 'none'; form-action 'none'; base-uri 'none'; frame-src 'none'; img-src data:">
+<title>Phishing Email Analyser</title>
+<meta name="description" content="Educational phishing triage tool. Analysis runs entirely in your browser.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <p class="brand">Phishing Email Analyser</p>
+    <h1>Paste a suspicious email. See exactly which warning signs add up.</h1>
+    <p class="lede">An educational triage tool. Every point in the score is tied to a named warning sign you can read and challenge.</p>
+    <p class="privacy-pill"><strong>Private by design.</strong> Analysis runs inside this browser tab. Your email is never uploaded, stored or tracked.</p>
+  </div>
+</header>
+
+<main class="wrap grid">
+  <section class="panel" aria-labelledby="in-h">
+    <h2 id="in-h">1. Paste the email</h2>
+    <label for="email" class="sr">Email contents</label>
+    <textarea id="email" rows="14" spellcheck="false" placeholder="Paste the email text here. Include headers such as From, Reply-To and Authentication-Results if you have them."></textarea>
+    <div class="actions">
+      <button id="analyse" class="primary" type="button">Analyse Email</button>
+      <button id="clear" class="ghost" type="button">Clear</button>
+    </div>
+    <h3>Or try a fictional example</h3>
+    <div id="demos" class="chips"></div>
+    <p class="small">Examples are invented. They use reserved fake domains and contain no working links.</p>
+  </section>
+
+  <section class="panel" aria-labelledby="out-h" aria-live="polite">
+    <h2 id="out-h">2. Result</h2>
+    <div id="empty" class="empty">Nothing analysed yet. Paste an email or load an example, then choose <strong>Analyse Email</strong>.</div>
+    <div id="result" hidden>
+      <div class="verdict">
+        <div id="ring" class="ring"><span id="score">0</span></div>
+        <div>
+          <p id="label" class="label"></p>
+          <p id="summary" class="summary"></p>
+        </div>
+      </div>
+      <h3>Why this score</h3>
+      <p id="sum" class="small"></p>
+      <ul id="findings" class="findings"></ul>
+      <h3>What to do next</h3>
+      <ol id="recs" class="recs"></ol>
+    </div>
+  </section>
+</main>
+
+<section class="wrap notices">
+  <div class="note warn">
+    <h3>Read this first</h3>
+    <ul>
+      <li>This is an educational triage tool. It looks for warning signs and <strong>cannot prove</strong> an email is safe or malicious.</li>
+      <li>Never click a suspicious link or open an attachment just to test it.</li>
+      <li>Check important messages independently: use the organisation's official website, app or a contact number you already trust.</li>
+    </ul>
+  </div>
+  <div class="note">
+    <h3>Privacy notice</h3>
+    <p>All analysis happens locally in your browser using the JavaScript on this page. There is no server, database, AI service, analytics or tracking, and the page tells your browser to block outgoing network requests. Closing or refreshing the tab erases what you pasted.</p>
+  </div>
+</section>
+
+<footer class="wrap small">Phishing Email Analyser · static site · rule-based scoring you can read in <code>app.js</code></footer>
+<script src="app.js"></script>
+</body>
+</html>
